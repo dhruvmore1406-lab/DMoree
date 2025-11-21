@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>More & More</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --primary:#0A3D62; /* deep blue */
+      --accent:#F39C12;   /* orange accent */
+      --muted:#6B7785;
+      --bg:#F9FAFB;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --max-w:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#222;background:var(--bg)}
+
+    /* Container */
+    .container{max-width:var(--max-w);margin:0 auto;padding:28px}
+
+    /* Header */
+    header{background:transparent;padding:14px 0;position:sticky;top:0;z-index:80;backdrop-filter: blur(6px)}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{height:54px;border-radius:8px}
+    .brand h1{font-family:Montserrat;margin:0;font-size:18px;color:var(--primary)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;box-shadow:0 6px 18px rgba(243,156,18,0.18);border:none;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:48px 0}
+    .hero-left{padding:24px}
+    .eyebrow{display:inline-block;background:linear-gradient(90deg,var(--accent),#ffb259);color:white;padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px}
+    .hero h2{font-family:Montserrat;font-size:34px;margin:18px 0 12px;line-height:1.05;color:var(--primary)}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .actions{display:flex;gap:12px}
+
+    /* Right hero card */
+    .quote-card{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));padding:18px;border-radius:16px;box-shadow:0 12px 30px rgba(15,23,42,0.08)}
+    .quote-card form{display:flex;flex-direction:column;gap:8px}
+    .field{display:flex;flex-direction:column}
+    .field input,.field select{padding:12px;border-radius:10px;border:1px solid #e6e9ee}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Product grid */
+    .section{padding:56px 0}
+    .section h3{font-family:Montserrat;margin:0 0 18px;font-size:20px;color:var(--primary)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,0.04);transition:transform .28s ease,box-shadow .28s ease}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .card h4{margin:10px 0 6px;font-size:16px}
+    .specs{font-size:13px;color:var(--muted);margin-bottom:10px}
+    .card button{background:transparent;border:1px solid var(--primary);padding:8px 12px;border-radius:10px;cursor:pointer}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(10,61,98,0.08)}
+
+    /* Why choose us */
+    .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .feature{background:linear-gradient(180deg,#fff,#fbfbfd);padding:18px;border-radius:12px;text-align:center}
+    .feature i{font-size:22px;color:var(--accent);display:block;margin-bottom:10px}
+    .feature h5{margin:0 0 6px}
+    .feature p{color:var(--muted);font-size:13px}
+
+    /* Testimonials */
+    .testimonials{display:flex;gap:12px;overflow:auto;padding:6px}
+    .tcard{min-width:290px;background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,0.04)}
+
+    /* Footer */
+    footer{margin-top:40px;padding:28px 0;background:transparent}
+    .footer-grid{display:grid;grid-template-columns:1fr 220px;gap:18px}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr;}
+      .quote-card{order:2}
+      .hero-left{order:1}
+      .footer-grid{grid-template-columns:1fr}
+    }
+
+    /* small niceties */
+    .badge{display:inline-block;padding:6px 10px;background:var(--card);border-radius:999px;border:1px solid #eef2f6;font-size:13px}
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;gap:8px}
+    .logo-square{width:58px;height:58px;border-radius:8px;background:linear-gradient(135deg,var(--primary),#164d6b);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo-square">SSE</div>
+        <div>
+          <h1>More & More</h1>
+          <div class="small muted">Commercial Kitchen Solutions</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="cta" id="openQuote">Get Quote</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="hero">
+      <div class="hero-left">
+        <span class="eyebrow">Trusted Since 2012</span>
+        <h2>Commercial Kitchen Solutions for Restaurants, Hotels & Cafés</h2>
+        <p>High-quality stainless steel kitchen equipment, custom fabrication and on-site installation across Pune & Maharashtra. Durable, certified and designed for heavy use.</p>
+
+        <div class="actions">
+          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+          <a href="#products" class="badge">View Products</a>
+        </div>
+
+        <div style="margin-top:22px;display:flex;gap:12px;align-items:center">
+          <div class="center"><i class="fas fa-truck"></i><span class="muted">Delivery & installation</span></div>
+          <div class="center"><i class="fas fa-tools"></i><span class="muted">Custom fabrication</span></div>
+          <div class="center"><i class="fas fa-shield-alt"></i><span class="muted">Quality guaranteed</span></div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="quote-card" aria-hidden="false">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="kitchen equipment" style="width:64px;height:64px;border-radius:8px;object-fit:cover">
+            <div>
+              <div style="font-weight:700">Quick Quote</div>
+              <div class="small muted">Get an estimate within 24 hours</div>
+            </div>
+          </div>
+
+          <form id="quickQuote">
+            <div class="field"><input required placeholder="Full name" name="name"></div>
+            <div class="field"><input required placeholder="Email" name="email" type="email"></div>
+            <div class="field"><input required placeholder="Phone" name="phone" type="tel"></div>
+            <div class="field"><select name="category"><option>Choose product category</option><option>Cooking Range</option><option>Grill / Tandoor</option><option>Refrigeration</option><option>Custom Fabrication</option></select></div>
+            <div class="field"><button class="cta" type="submit">Request Quote</button></div>
+            <div class="small muted">Or WhatsApp us at <a href="https://wa.me/919000000000" target="_blank">+91 90000 00000</a></div>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="section">
+      <h3>Featured Products</h3>
+      <div class="cards" id="productGrid">
+        <!-- Cards will be injected by JS - replace images and details as needed -->
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="services" class="section">
+      <h3>Why Choose More & More</h3>
+      <div class="grid-4">
+        <div class="feature"><i class="fas fa-certificate"></i><h5>Quality Materials</h5><p>304/316 grade stainless steel for food safety and longevity.</p></div>
+        <div class="feature"><i class="fas fa-cogs"></i><h5>Custom Fabrication</h5><p>Made-to-measure solutions for any kitchen layout.</p></div>
+        <div class="feature"><i class="fas fa-clock"></i><h5>Timely Delivery</h5><p>Fast production and reliable on-site installation.</p></div>
+        <div class="feature"><i class="fas fa-headset"></i><h5>After-sales Support</h5><p>Spare parts, service and maintenance support available.</p></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section">
+      <h3>What Our Clients Say</h3>
+      <div class="testimonials" id="testimonials">
+        <div class="tcard"><strong>Hotel Manager — Pune</strong><p class="muted">"Excellent workmanship and timely installation. Our kitchen runs smoothly now."</p></div>
+        <div class="tcard"><strong>Restaurant Owner — Shivaji Nagar</strong><p class="muted">"Customized design fit our space perfectly — highly recommended."</p></div>
+        <div class="tcard"><strong>Caterer — Pune</strong><p class="muted">"Solid build quality and fast service. Great team."</p></div>
+      </div>
+    </section>
+
+    <!-- ABOUT / CONTACT -->
+    <section id="about" class="section">
+      <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <h3>About More & More</h3>
+          <p class="muted">More & More Pune specialises in stainless steel kitchen equipment, fabrication and turnkey projects for commercial clients. With experienced engineers and on-site technicians, we provide end-to-end solutions from design to installation.</p>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <div class="badge">ISO Certified</div>
+            <div class="badge">10+ Years</div>
+            <div class="badge">Custom Design</div>
+          </div>
+        </div>
+
+        <div id="contact" style="width:320px;min-width:220px">
+          <h3>Contact</h3>
+          <form id="contactForm">
+            <div class="field"><input placeholder="Name" name="name"></div>
+            <div class="field"><input placeholder="Email" name="email" type="email"></div>
+            <div class="field"><input placeholder="Phone" name="phone" type="tel"></div>
+            <div class="field"><textarea placeholder="Message" rows="4" name="message"></textarea></div>
+            <div class="field"><button class="cta" type="submit">Send Message</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT LOGOS -->
+    <section class="section">
+      <h3>Trusted By</h3>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div style="width:110px;height:54px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center">Logo</div>
+        <div style="width:110px;height:54px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center">Logo</div>
+        <div style="width:110px;height:54px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center">Logo</div>
+        <div style="width:110px;height:54px;background:white;border-radius:8px;display:flex;align-items:center;justify-content:center">Logo</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <strong>More & More Pune</strong>
+          <p class="muted">Fabrication | Installation | Maintenance</p>
+          <p class="muted">Address: Pune, Maharashtra</p>
+        </div>
+        <div>
+          <strong>Quick Links</strong>
+          <ul style="list-style:none;padding:0;margin:8px 0 0">
+            <li><a href="#products">Products</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Simple product data - replace with real content or server data
+    const PRODUCTS = [
+      {id:1,title:'Stainless Steel Burner Range',img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',specs:['Heavy Duty','SS304 Build','Custom size']},
+      {id:2,title:'Commercial Refrigerator',img:'https://images.unsplash.com/photo-1585238342022-1c5a3f7b8c9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',specs:['Energy Efficient','Large Capacity']},
+      {id:3,title:'Grill & Tandoor Unit',img:'https://images.unsplash.com/photo-1558036117-CAE3B7FB8F?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',specs:['High Output','Easy Clean']},
+      {id:4,title:'Gasketed Work Table',img:'https://images.unsplash.com/photo-1567945716319-5cf37b8b6f4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',specs:['SS304','Adjustable Shelves']}
+    ];
+
+    const grid = document.getElementById('productGrid');
+    PRODUCTS.forEach(p=>{
+      const card = document.createElement('article');card.className='card';
+      card.innerHTML = `
+        <img src="${p.img}" alt="${p.title}">
+        <h4>${p.title}</h4>
+        <div class="specs">${p.specs.join(' • ')}</div>
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+          <button onclick="openQuoteWith('${p.title}')">Get Quote</button>
+          <a href="#" class="muted">View details</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    })
+
+    // Quote form handlers
+    document.getElementById('quickQuote').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Thanks! We received your quote request. We will contact you within 24 hours.');
+      e.target.reset();
+    })
+    document.getElementById('contactForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Message sent — thank you.');
+      e.target.reset();
+    })
+
+    // Open quote modal (simple behaviour) - scrolls to contact
+    document.getElementById('openQuote').addEventListener('click', ()=>{
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      document.getElementById('contact').querySelector('input[name="name"]').focus();
+    })
+
+    function openQuoteWith(title){
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      const msg = document.getElementById('contact').querySelector('textarea[name="message"]');
+      if(msg) msg.value = `Requesting quote for: ${title}`;
+    }
+
+    // Simple auto-scroll for testimonials (micro animation)
+    const t = document.getElementById('testimonials');
+    let offset = 0;
+    setInterval(()=>{
+      offset += 300;
+      if(offset > t.scrollWidth - t.clientWidth) offset = 0;
+      t.scrollTo({left: offset, behavior:'smooth'});
+    },4000);
+  </script>
+<script>
+  window.addEventListener('mouseover', initLandbot, { once: true });
+  window.addEventListener('touchstart', initLandbot, { once: true });
+  var myLandbot;
+  function initLandbot() {
+    if (!myLandbot) {
+      var s = document.createElement('script');
+      s.type = "module"
+      s.async = true;
+      s.addEventListener('load', function() {
+        var myLandbot = new Landbot.Livechat({
+          configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3238512-NQR3M74RD38XK2JW/index.json',
+        });
+      });
+      s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+  }
+</script>
+</body>
+</html>
